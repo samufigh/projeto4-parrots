@@ -50,18 +50,18 @@ h1{
     transform: rotateY(180deg);
   }
 
-  .card:hover .back-face {
+  /*.card:hover .back-face {
     transform: rotateY(0deg);
-  }
+  }*/
 
-  .card:hover .front-face {
+  /*.card:hover .front-face {
+    transform: rotateY(-180deg);
+  }*/
+
+
+  .rotateFront{
     transform: rotateY(-180deg);
   }
-
-
-  .rotate1{
+  .rotateBack{
     transform: rotateY(0deg);
-  }
-  .rorate2{
-    transform: rotateY(-180deg);
   }
