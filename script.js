@@ -1,22 +1,20 @@
 //variáveis e arrays-------------------------------------------------------------------------------------
 
+const jogo = document.querySelector('.main');
 let numDeCartas = null;
 let mod = null;
-let tiposDeCartas = [
-    "./img/bobrossparrot.gif",
-    "./img/explodyparrot.gif",
-    "./img/fiestaparrot.gif",
-    "./img/unicornparrot.gif",
-    "./img/metalparrot.gif",
-    "./img/revertitparrot.gif",
-    "./img/tripletsparrot.gif",
+const tiposDeCartas = [
+    "./imagens/bobrossparrot.gif",
+    "./imagens/explodyparrot.gif",
+    "./imagens/fiestaparrot.gif",
+    "./imagens/unicornparrot.gif",
+    "./imagens/metalparrot.gif",
+    "./imagens/revertitparrot.gif",
+    "./imagens/tripletsparrot.gif",
   ];
   let deck = [];
 
 //execução-----------------------------------------------------------------------------------------
-
-//embaralha o deck
-deck.sort(comparator);
 
 //pergunta
 do{
@@ -24,25 +22,17 @@ do{
     mod = numDeCartas % 2;
 } while (((numDeCartas < 1) || (numDeCartas > 14)) || (mod !== 0))
 
+//embaralha as imagens
+tiposDeCartas.sort(comparator);
+
 //cria os pares
-
-
-//cria as cartas
-for(let i=0; i<numDeCartas; i++){
-    let main=document.querySelector('.main');
-    main.innerHTML= main.innerHTML + `
-         <div class="card" onclick="virarCarta(this)">
-            <div class="tras back-face face">
-                Verso
-            </div>
-            <div class="frente face">
-                <img src="./imagens/back.png">
-            </div>
-        </div>
-    `;
-}
 criarPares();
- console.log(deck);
+
+//embaralha as cartas
+deck.sort(comparator);
+
+//mostra a carta
+mostrarDeck();
 
 //funções--------------------------------------------------------------------------------------------------
 
@@ -71,9 +61,10 @@ function criarPares(){
 
 //criar cartas
 function criarCartas(indice){
+    const tipo = tiposDeCartas[indice];
     const carta = `<div class="card" onclick="virarCarta(this)">
         <div class="tras back-face face">
-             Verso
+             <img src="${tipo}">
         </div>
         <div class="frente face">
             <img src="./imagens/back.png">
@@ -81,4 +72,11 @@ function criarCartas(indice){
     </div>
     `;
     return carta;
+}
+
+//mostrar cartas
+function mostrarDeck(){
+    for(i=0; i<numDeCartas; i++){
+        jogo.innerHTML+=deck[i];
+    }
 }
