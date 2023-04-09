@@ -19,7 +19,7 @@ const tiposDeCartas = [
 do{
     numDeCartas=prompt("Com quantas cartas você quer jogar? Escolha entre 4 e 14.");
     mod = numDeCartas % 2;
-} while (((numDeCartas < 1) || (numDeCartas > 14)) || (mod !== 0))
+} while (((numDeCartas < 4) || (numDeCartas > 14)) || (mod !== 0))
 
 //embaralha as imagens
 tiposDeCartas.sort(comparator);
