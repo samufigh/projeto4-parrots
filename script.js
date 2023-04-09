@@ -63,12 +63,12 @@ function criarPares(){
 //criar cartas
 function criarCartas(indice){
     const tipo = tiposDeCartas[indice];
-    const carta = `<div class="card" onclick="virarCarta(this)">
+    const carta = `<div data-test="card" class="card" onclick="virarCarta(this)">
         <div class="tras back-face face">
-             <img src="${tipo}">
+             <img data-test="face-up-image" src="${tipo}">
         </div>
         <div class="frente face">
-            <img src="./imagens/back.png">
+            <img data-test="face-down-image" src="./imagens/back.png">
         </div>
     </div>
     `;
