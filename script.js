@@ -1,5 +1,5 @@
 //variáveis e arrays-------------------------------------------------------------------------------------
-
+let cartaVirada = [];
 const jogo = document.querySelector('.main');
 let numDeCartas = null;
 let jogadas=0;
@@ -37,13 +37,43 @@ mostrarDeck();
 
 //virar carta
 function virarCarta(carta){
+
     const front=carta.querySelector('.frente');
-    front.classList.toggle('rotateFront');
+    front.classList.add('rotateFront');
     const back=carta.querySelector('.tras');
-    back.classList.toggle('rotateBack');
+    back.classList.add('rotateBack');
 
     compararCartas(carta);
 }
+//comparar
+function compararCartas(carta) {
+    cartasComparadas.push(carta);
+    const numCartasComparadas = cartasComparadas.length;
+  
+    if (numCartasComparadas === 2) {
+      jogadas++;
+  
+      const carta1 = cartasComparadas[0];
+      const carta2 = cartasComparadas[1];
+  
+      if (carta1.innerHTML === carta2.innerHTML) {
+        comparar.push(carta1, carta2);
+        cont++;
+        concluir();
+      } else {
+        cartaVirada.push(carta1, carta2);
+        setTimeout(() => {
+          carta1.querySelector('.frente').classList.remove('rotateFront');
+          carta1.querySelector('.tras').classList.remove('rotateBack');
+          carta2.querySelector('.frente').classList.remove('rotateFront');
+          carta2.querySelector('.tras').classList.remove('rotateBack');
+          cartaVirada = [];
+        }, 1000);
+      }
+  
+      cartasComparadas = [];
+    }
+  }
 
 //embaralhar
 function comparator() {
@@ -82,48 +112,10 @@ function mostrarDeck(){
     }
 }
 
-//comparar cartas
-function compararCartas(carta){
-    jogadas++;
 
-    while (comparar.length==2){
-        if(cartasComparadas[0] !== cartasComparadas[1]){
-            desvirar(comparar[0], comparar[1]);
-        }
-        comparar.length=0;
-        cartasComparadas.length=0;
-        console.log(jogadas);
-    }
-
-        const back = carta.querySelector('.tras');
-        const imagem = back.querySelector('img');
-        cartasComparadas.push(imagem.src);
-        comparar.push(carta);
-        //console.log(comparar.length);
-
-       if(cartasComparadas[0] === cartasComparadas[1]){  
-
-            for (let i=0; i<2; i++){
-                comparar[i].removeAttribute("onclick");
-            }
-            cont=cont+2;
-            concluir();
-        }
-    }
-    
-function desvirar(carta1, carta2){
-    const front1=carta1.querySelector('.frente');
-    front1.classList.toggle('rotateFront');
-    const back1=carta1.querySelector('.tras');
-    back1.classList.toggle('rotateBack');
-
-    const front2=carta2.querySelector('.frente');
-    front2.classList.toggle('rotateFront');
-    const back2=carta2.querySelector('.tras');
-    back2.classList.toggle('rotateBack');
-}
 function concluir(){
-    if(numDeCartas==cont){
+    if(numDeCartas==cont*2){
+        jogadas=jogadas*2;
         alert (`Você ganhou em ${jogadas} jogadas!`);
     }
 }

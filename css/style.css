@@ -1,61 +1,61 @@
 body{
-    background-color: #E5E5E5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #E5E5E5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h1{
-    font-family: roboto;
-    font-size: 56px;
-    color: #75B79E;
-    font-weight: 700;
-    margin: 45px 0px;
+  font-family: roboto;
+  font-size: 56px;
+  color: #75B79E;
+  font-weight: 700;
+  margin: 45px 0px;
 }
 .main{
-    display: flex;
-    flex-wrap: wrap;
-    width: 1300px;
-    height: auto;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1300px;
+  height: auto;
+  justify-content: center;
 }
 .main > div{
-    width: 117px;
-    height: 146px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 34px;
-    margin-bottom: 34px;
-    position: relative;
+  width: 117px;
+  height: 146px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 34px;
+  margin-bottom: 34px;
+  position: relative;
 }
 
 .card img{
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 .face {
-    width: 100%;
-    height: 100%;
-    background-color: #A7E9AF;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    backface-visibility: hidden;
-    transition: all 1s;
-    transform-style: preserve-3d;
-  }
-  .back-face {
-    transform: rotateY(180deg);
-  }
-  .rotateFront{
-    transform: rotateY(-180deg);
-  }
-  .rotateBack{
-    transform: rotateY(0deg);
-  }
+  width: 100%;
+  height: 100%;
+  background-color: #A7E9AF;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all 1s;
+  transform-style: preserve-3d;
+}
+.back-face {
+  transform: rotateY(180deg);
+}
+.rotateFront{
+  transform: rotateY(-180deg);
+}
+.rotateBack{
+  transform: rotateY(0deg);
+}
 
-  .naoClicar{
-    pointer-events: none;
-  }
+.naoClicar{
+  pointer-events: none;
+}
