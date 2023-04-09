@@ -55,3 +55,7 @@ h1{
   .rotateBack{
     transform: rotateY(0deg);
   }
+
+  .naoClicar{
+    pointer-events: none;
+  }

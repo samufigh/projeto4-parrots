@@ -3,6 +3,7 @@
 const jogo = document.querySelector('.main');
 let numDeCartas = null;
 let jogadas=0;
+let cont=0;
 let mod = null;
 const tiposDeCartas = [
     "./imagens/bobrossparrot.gif", "./imagens/explodyparrot.gif", "./imagens/fiestaparrot.gif", "./imagens/unicornparrot.gif",
@@ -83,50 +84,46 @@ function mostrarDeck(){
 
 //comparar cartas
 function compararCartas(carta){
+    jogadas++;
 
-    while (comparar.length>1){
+    while (comparar.length==2){
         if(cartasComparadas[0] !== cartasComparadas[1]){
             desvirar(comparar[0], comparar[1]);
         }
         comparar.length=0;
         cartasComparadas.length=0;
-        jogadas=jogadas+2;
+        console.log(jogadas);
     }
 
         const back = carta.querySelector('.tras');
         const imagem = back.querySelector('img');
         cartasComparadas.push(imagem.src);
         comparar.push(carta);
-        console.log(comparar.length);
-
-        console.log(cartasComparadas[0]);
-        console.log(cartasComparadas[1]);
-
+        //console.log(comparar.length);
 
        if(cartasComparadas[0] === cartasComparadas[1]){  
+
             for (let i=0; i<2; i++){
                 comparar[i].removeAttribute("onclick");
             }
+            cont=cont+2;
+            concluir();
         }
     }
     
 function desvirar(carta1, carta2){
-    console.log(carta1);
     const front1=carta1.querySelector('.frente');
     front1.classList.toggle('rotateFront');
     const back1=carta1.querySelector('.tras');
     back1.classList.toggle('rotateBack');
 
-    console.log(carta2);
     const front2=carta2.querySelector('.frente');
     front2.classList.toggle('rotateFront');
     const back2=carta2.querySelector('.tras');
     back2.classList.toggle('rotateBack');
 }
-
-
-/*function desabilitar(){
-    const carta = document.querySelector('.card');
-    carta.classList.add('naoClicar');
-    console.log(carta);
-}*/
+function concluir(){
+    if(numDeCartas==cont){
+        alert (`Você ganhou em ${jogadas} jogadas!`);
+    }
+}
