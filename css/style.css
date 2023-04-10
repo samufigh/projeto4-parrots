@@ -1,5 +1,5 @@
 body{
-  background-color: #E5E5E5;
+  background-color: #EEF9BF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,4 +58,16 @@ h1{
 
 .naoClicar{
   pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  div>h1 {
+    font-size: 36px;
+  }
+  .cards {
+    margin: 0 100px;
+  }
+  .main{
+    width:100%;
+  }
 }
