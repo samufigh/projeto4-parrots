@@ -11,7 +11,6 @@ const tiposDeCartas = [
   ];
   let deck = [];
   let cartasComparadas = [];
-  let comparar = [];
 
 //execução-----------------------------------------------------------------------------------------
 
@@ -35,6 +34,36 @@ mostrarDeck();
 
 //funções--------------------------------------------------------------------------------------------------
 
+//embaralhar
+function comparator() {
+  return Math.random() - 0.5;
+}
+
+//criar pares
+function criarPares(){
+  const numDePares = numDeCartas / 2;
+  for (let i = 0; i < numDePares; i++){
+      const carta = criarCartas(i);
+      deck.push(carta);
+      deck.push(carta);
+  }
+}
+
+//criar cartas
+function criarCartas(indice){
+  const tipo = tiposDeCartas[indice];
+  const carta = `<div data-test="card" class="card" onclick="virarCarta(this)">
+      <div class="tras back-face face">
+           <img data-test="face-up-image" src="${tipo}">
+      </div>
+      <div class="frente face">
+          <img data-test="face-down-image" src="./imagens/back.png">
+      </div>
+  </div>
+  `;
+  return carta;
+}
+
 //virar carta
 function virarCarta(carta){
 
@@ -45,6 +74,7 @@ function virarCarta(carta){
 
     compararCartas(carta);
 }
+
 //comparar
 function compararCartas(carta) {
     cartasComparadas.push(carta);
@@ -57,7 +87,6 @@ function compararCartas(carta) {
       const carta2 = cartasComparadas[1];
   
       if (carta1.innerHTML === carta2.innerHTML) {
-        comparar.push(carta1, carta2);
         cont++;
         concluir();
       } else {
@@ -75,36 +104,6 @@ function compararCartas(carta) {
     }
   }
 
-//embaralhar
-function comparator() {
-    return Math.random() - 0.5;
-  }
-
-//criar pares
-function criarPares(){
-    const numDePares = numDeCartas / 2;
-    for (let i = 0; i < numDePares; i++){
-        const carta = criarCartas(i);
-        deck.push(carta);
-        deck.push(carta);
-    }
-}
-
-//criar cartas
-function criarCartas(indice){
-    const tipo = tiposDeCartas[indice];
-    const carta = `<div data-test="card" class="card" onclick="virarCarta(this)">
-        <div class="tras back-face face">
-             <img data-test="face-up-image" src="${tipo}">
-        </div>
-        <div class="frente face">
-            <img data-test="face-down-image" src="./imagens/back.png">
-        </div>
-    </div>
-    `;
-    return carta;
-}
-
 //mostrar cartas
 function mostrarDeck(){
     for(i=0; i<numDeCartas; i++){
@@ -112,7 +111,7 @@ function mostrarDeck(){
     }
 }
 
-
+//mostrar mensagem ao ganhar
 function concluir(){
     if(numDeCartas==cont*2){
         jogadas=jogadas*2;
